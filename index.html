@@ -12587,9 +12587,26 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="TITLE">TITLE<a class="anchor-link" href="#TITLE">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The purpose of this project is to examine the factors affecting food insecurity on a county and state wide level throughout the US. We will get our data from the Food Environment Atlas (located at <a href="https://www.ers.usda.gov/data-products/food-environment-atlas.aspx">https://www.ers.usda.gov/data-products/food-environment-atlas.aspx</a>) and use data processing techniques to find the relationships between several variables, including food access, food availability, assistance, prices, local foods, demographics, insecurity, and health.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -12614,85 +12631,6 @@ div#notebook {
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-
-           <script>
-               
-                function vct_load_lib(url, callback){
-                      if(typeof d3 !== 'undefined' &&
-                         url === 'http://d3js.org/d3.v3.min.js'){
-                        callback()
-                      }
-                      var s = document.createElement('script');
-                      s.src = url;
-                      s.async = true;
-                      s.onreadystatechange = s.onload = callback;
-                      s.onerror = function(){
-                        console.warn("failed to load library " + url);
-                        };
-                      document.getElementsByTagName("head")[0].appendChild(s);
-                };
-                var vincent_event = new CustomEvent(
-                  "vincent_libs_loaded",
-                  {bubbles: true, cancelable: true}
-                );
-                
-               function load_all_libs(){
-                  console.log('Loading Vincent libs...')
-                  vct_load_lib('http://d3js.org/d3.v3.min.js', function(){
-                  vct_load_lib('http://d3js.org/d3.geo.projection.v0.min.js', function(){
-                  vct_load_lib('http://wrobstory.github.io/d3-cloud/d3.layout.cloud.js', function(){
-                  vct_load_lib('http://wrobstory.github.io/vega/vega.v1.3.3.js', function(){
-                  window.dispatchEvent(vincent_event);
-                  });
-                  });
-                  });
-                  });
-               };
-               if(typeof define === "function" && define.amd){
-                    if (window['d3'] === undefined ||
-                        window['topojson'] === undefined){
-                        require.config(
-                            {paths: {
-                              d3: 'http://d3js.org/d3.v3.min',
-                              topojson: 'http://d3js.org/topojson.v1.min'
-                              }
-                            }
-                          );
-                        require(["d3"], function(d3){
-                            console.log('Loading Vincent from require.js...')
-                            window.d3 = d3;
-                            require(["topojson"], function(topojson){
-                                window.topojson = topojson;
-                                load_all_libs();
-                            });
-                        });
-                    } else {
-                        load_all_libs();
-                    };
-               }else{
-                    console.log('Require.js not found, loading manually...')
-                    load_all_libs();
-               };
-
-           </script>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -18021,22 +17959,26 @@ We also found that parking lots needed to be queried in a certain format. For ex
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;counties&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">county_topo</span><span class="p">,</span>
-             <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="s1">&#39;us_counties.geo&#39;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">state_topo</span><span class="p">,</span>
-             <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="s1">&#39;us_states.geo&#39;</span><span class="p">}</span>
-             <span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">vis</span> <span class="o">=</span> <span class="n">vincent</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">geo_data</span><span class="o">=</span><span class="n">geo_data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;albersUsa&#39;</span><span class="p">,</span>
-                  <span class="n">data_bind</span><span class="o">=</span><span class="s1">&#39;MEDHHINC15&#39;</span><span class="p">,</span> <span class="n">data_key</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">map_key</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;counties&#39;</span><span class="p">:</span> <span class="s1">&#39;properties.FIPS&#39;</span><span class="p">})</span>
-<span class="k">del</span> <span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">update</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#084081&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">enter</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#fff&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">enter</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#7bccc4&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;vega.json&#39;</span><span class="p">)</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<span class="sd">geo_data = [{&#39;name&#39;: &#39;counties&#39;,</span>
+<span class="sd">             &#39;url&#39;: county_topo,</span>
+<span class="sd">             &#39;feature&#39;: &#39;us_counties.geo&#39;},</span>
+<span class="sd">            {&#39;name&#39;: &#39;states&#39;,</span>
+<span class="sd">             &#39;url&#39;: state_topo,</span>
+<span class="sd">             &#39;feature&#39;: &#39;us_states.geo&#39;}</span>
+<span class="sd">             ]</span>
+
+<span class="sd">vis = vincent.Map(data=df, geo_data=geo_data, scale=1000, projection=&#39;albersUsa&#39;,</span>
+<span class="sd">                  data_bind=&#39;MEDHHINC15&#39;, data_key=&#39;FIPS&#39;, map_key={&#39;counties&#39;: &#39;properties.FIPS&#39;})</span>
+<span class="sd">del vis.marks[1].properties.update</span>
+<span class="sd">vis.marks[0].properties.update.fill.value = &#39;#084081&#39;</span>
+<span class="sd">vis.marks[1].properties.enter.stroke.value = &#39;#fff&#39;</span>
+<span class="sd">vis.marks[0].properties.enter.stroke.value = &#39;#7bccc4&#39;</span>
+<span class="sd">vis.to_json(&#39;vega.json&#39;)</span>
+<span class="sd">vis.display()</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1">#Creating a map of each county by median household income</span>
 </pre></div>
@@ -18086,22 +18028,26 @@ We also found that parking lots needed to be queried in a certain format. For ex
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;counties&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">county_topo</span><span class="p">,</span>
-             <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="s1">&#39;us_counties.geo&#39;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">state_topo</span><span class="p">,</span>
-             <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="s1">&#39;us_states.geo&#39;</span><span class="p">}</span>
-             <span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">vis</span> <span class="o">=</span> <span class="n">vincent</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">geo_data</span><span class="o">=</span><span class="n">geo_data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;albersUsa&#39;</span><span class="p">,</span>
-                  <span class="n">data_bind</span><span class="o">=</span><span class="s1">&#39;GROCPTH14&#39;</span><span class="p">,</span> <span class="n">data_key</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">map_key</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;counties&#39;</span><span class="p">:</span> <span class="s1">&#39;properties.FIPS&#39;</span><span class="p">})</span>
-<span class="k">del</span> <span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">update</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">update</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#084081&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">enter</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#fff&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">marks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">enter</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;#7bccc4&#39;</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;vega.json&#39;</span><span class="p">)</span>
-<span class="n">vis</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<span class="sd">geo_data = [{&#39;name&#39;: &#39;counties&#39;,</span>
+<span class="sd">             &#39;url&#39;: county_topo,</span>
+<span class="sd">             &#39;feature&#39;: &#39;us_counties.geo&#39;},</span>
+<span class="sd">            {&#39;name&#39;: &#39;states&#39;,</span>
+<span class="sd">             &#39;url&#39;: state_topo,</span>
+<span class="sd">             &#39;feature&#39;: &#39;us_states.geo&#39;}</span>
+<span class="sd">             ]</span>
+
+<span class="sd">vis = vincent.Map(data=df, geo_data=geo_data, scale=1000, projection=&#39;albersUsa&#39;,</span>
+<span class="sd">                  data_bind=&#39;GROCPTH14&#39;, data_key=&#39;FIPS&#39;, map_key={&#39;counties&#39;: &#39;properties.FIPS&#39;})</span>
+<span class="sd">del vis.marks[1].properties.update</span>
+<span class="sd">vis.marks[0].properties.update.fill.value = &#39;#084081&#39;</span>
+<span class="sd">vis.marks[1].properties.enter.stroke.value = &#39;#fff&#39;</span>
+<span class="sd">vis.marks[0].properties.enter.stroke.value = &#39;#7bccc4&#39;</span>
+<span class="sd">vis.to_json(&#39;vega.json&#39;)</span>
+<span class="sd">vis.display()</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1">#Creating a map of each county by grocery stores per thousand people in 2014</span>
 </pre></div>
